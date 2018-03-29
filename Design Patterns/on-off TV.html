@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<button id="open">open</button>
+<button id="close">close</button>
+</body>
+<script>
+var TV={
+	open:function(){
+		console.log('open TV');
+	},
+	close:function(){
+		console.log('close TV');
+	}
+};
+var TVCommand=function(tv){
+	this.tv=tv;
+};
+TVCommand.prototype.open=function(){
+	this.tv.open();
+};
+TVCommand.prototype.close=function(){
+	this.tv.close();
+};
+var setCommand = function(command){
+	document.getElementById('open').onclick=function(){
+		command.open();
+	};
+	document.getElementById('close').onclick=function(){
+		command.close();
+	};
+};
+setCommand(new TVCommand(TV));
+</script>
+</html>
